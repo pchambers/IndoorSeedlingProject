@@ -27,7 +27,7 @@ def determineOutput(timeOn):
 	#determine desired output
 	if currHour < startTime:
 		desiredOutput = 0
-	elif currHour > endTime:
+	elif currHour >= endTime:
 		desiredOutput = 0
 	else:
 		desiredOutput = 1
