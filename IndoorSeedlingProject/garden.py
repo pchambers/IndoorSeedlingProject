@@ -25,4 +25,4 @@ def speak(pin, sensor):
 #call garden control
 Controller.gardenControl(1,16)
 Controller.gardenControl(2,16)
-speak(0, DHT22)
+#speak(0, DHT22)

@@ -7,7 +7,7 @@ AM2302 = 'AM2302'
 SENSORS = [DHT22, DHT11, AM2302]
 
 def read(pin, sensor):
-	proc = subprocess.Popen(['/root/Documents/IndoorSeedlingProject/IndoorSeedlingProject/dht22_driver/checkHumidity/checkHumidity ' + str(pin) + ' ' + sensor], stdout=subprocess.PIPE, shell=True)
+	proc = subprocess.Popen(['/root/Documents/IndoorSeedlingProject/dht22_driver/checkHumidity/checkHumidity ' + str(pin) + ' ' + sensor], stdout=subprocess.PIPE, shell=True)
 	(out, err) = proc.communicate()
 
 	sensor_data = out.split('\n')
