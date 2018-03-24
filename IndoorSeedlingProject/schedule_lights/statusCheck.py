@@ -2,16 +2,14 @@
 statusCheck
 
 """
-
+import onionGpio
 from int2Addr import int2Addr
-from OmegaExpansion import relayExp
+
 
 def checkStatus(light):
 
 	led = int2Addr(light)
-	gpio = onionGpio.OnionGpio(led[0])
-
-	#status = relayExp.readChannel(led[0], led[1])
+	gpio = onionGpio.OnionGpio(led)
 	
 	status = gpio.getValue()
 	if status == 1:

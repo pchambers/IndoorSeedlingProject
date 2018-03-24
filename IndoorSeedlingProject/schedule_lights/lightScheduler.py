@@ -3,7 +3,6 @@ lightScheduler.py
 """
 
 import time, onionGpio
-from OmegaExpansion import relayExp
 from int2Addr import int2Addr
 
 #lightControl receives to int inputs. 
@@ -12,14 +11,9 @@ from int2Addr import int2Addr
 def lightControl(light, desiredState):
 
 	#set relay i2c address
-	led = int2Addr(light)
-	ledAddr = led[0]
-	
-	#ledChannel = led[1]
-	#print ledAddr
+	ledAddr = int2Addr(light)
+
 	#set output to desiredState input
-	#status1 = relayExp.setChannel(ledAddr, ledChannel, desiredState)
-	
 	led = onionGpio.OnionGpio(ledAddr)
 	led.setOutputDirection(1)
 	led.setValue(desiredState)
