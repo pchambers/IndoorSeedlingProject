@@ -9,7 +9,7 @@ def int2Addr(light):
 	#set relay i2c Address
 	if light == 1:
 		ledAddr = 2
-		ledChannel = light - 1
+		ledChannel = 1
 	elif light == 2:
 		ledAddr = 3
 		ledChannel = 1

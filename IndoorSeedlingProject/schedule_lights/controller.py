@@ -27,8 +27,9 @@ def gardenControl(tray, timeOn):
 	print "desired output: "
 	print  desiredOutput
 #2	#make sure relay is initialized.
-	confirmInit(tray)
-
+	#confirmInit(tray)
+	#now unneccessary
+	
 #3	#determine current output
 	currentOutput = checkStatus(tray)
 

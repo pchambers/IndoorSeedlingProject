@@ -9,15 +9,15 @@ from OmegaExpansion import relayExp
 def checkStatus(light):
 
 	led = int2Addr(light)
+	gpio = onionGpio.OnionGpio(led[0])
 
-
-	status = relayExp.readChannel(led[0], led[1])
-
+	#status = relayExp.readChannel(led[0], led[1])
+	
+	status = gpio.getValue()
 	if status == 1:
-		print 'Relay ON'
-
+		print 'Relay OFF'
 	elif status == 0:
-		print 'Relay OFF '
+		print 'Relay ON '
 	else:
 		print 'Error: Bad status.'
 
