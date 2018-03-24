@@ -1,21 +1,23 @@
 import onionGpio, time
-
+from datetime import datetime
 
 def water(rack, t):
-	pp = trayPin(rack)
-	
-	if pp == 404:
-		print(pp)
-	#pp = 0
-	pump = onionGpio.OnionGpio(pp)
-	#pump._freeGpio()
-	#pump.setInputDirection()
-	pump.setOutputDirection(1)
-	pump.setValue(0)
-	time.sleep(t)
-	pump.setValue(1)	
-	
-	#pump._freeGpio()
+
+#1 find desired output
+	output = waterTimer(17, t)
+	desired = output[0]
+#2 determine current output
+	currOut = checkPumpStatus(rack)
+#3 turn on/off, report
+	if currOut == desired:
+		print "Pumps nominal."
+	else:
+		#turn on or off light, report action.		
+		pumpControl(rack,desired)
+		if desired == 0:
+			print ("Turned pump ON at: " + hourStr)
+		else:
+			print ("Turned pump OFF at: " + hourStr)
 
 
 def trayPin(tray):
@@ -34,14 +36,63 @@ def trayPin(tray):
 	#print waterPin
 	return waterPin
 
-def initWater():
-	water(1,0)
-	water(2,0)
-	water(3,0)
-	water(4,0)
 
+def waterTimer(stTime, dur):
+
+	#determine start and end times
+	startTime = stTime				# earliest acceptable time on
+	endTime = startTime + dur	# time off, given a certain number of hours in the day.
+
+	currHour = datetime.now().time().strftime("%H")	#determine the current hour (0-23)
+	hourStr = currHour		# maintain original string for debugging (print function) purposes later.
+
+	currMin = datetime.now().time().strftime("%M")
+	minStr = currMin
+
+	#cast currHour for logic operations:
+	currHour = int(currHour)
+	currMin = int(currMin)
+
+	#determine desired output
+	if currHour == startTime:
+		if currMin <= dur:
+			desiredOutput = 0
+		else:
+			desiredOutput = 1
+	else:
+		desiredOutput = 1
+	
+	#print desiredOutput
+	response = (desiredOutput, hourStr)
+	return response
+
+def checkPumpStatus(tray):
+	pin = trayPin(tray)
+	pump = onionGpio.OnionGpio(pin)
+
+	status = pump.getValue()
+	print 'Gpio value: ' + status
+	
+	status = int(status)
+	if status == 1:
+		print 'Pump OFF'
+	elif status == 0:
+		print 'Pump ON'
+	else:
+		print 'Error: Bad status.'
+
+	return status
+
+def pumpControl(tray, desiredOutput):
+	pin = trayPin(tray)
+	pump = onionGpio.OnionGpio(pin)
+	pump.setOutputDirection(1)
+	pump.setValue(desiredOutput)
+	
+"""
 initWater()
 water(1,15)
 water(2,15)
 water(3,15)
 water(4,15)
+"""

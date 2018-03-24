@@ -16,9 +16,9 @@ def checkStatus(light):
 	
 	status = int(status)
 	if status == 1:
-		print 'Relay OFF'
+		print 'Light OFF'
 	elif status == 0:
-		print 'Relay ON '
+		print 'Light ON '
 	else:
 		print 'Error: Bad status.'
 
