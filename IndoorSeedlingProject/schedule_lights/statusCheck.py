@@ -12,6 +12,7 @@ def checkStatus(light):
 	gpio = onionGpio.OnionGpio(led)
 	
 	status = gpio.getValue()
+	print 'Gpio value: ' + status
 	if status == 1:
 		print 'Relay OFF'
 	elif status == 0:

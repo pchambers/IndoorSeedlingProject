@@ -32,7 +32,7 @@ def determineOutput(timeOn):
 	else:
 		desiredOutput = 0
 	
-	print desiredOutput
+	#print desiredOutput
 	response = (desiredOutput, hourStr)
 	return response
 
