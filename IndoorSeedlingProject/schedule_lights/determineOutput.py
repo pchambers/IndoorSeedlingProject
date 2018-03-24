@@ -26,11 +26,15 @@ def determineOutput(timeOn):
 
 	#determine desired output
 	if currHour < startTime:
-		desiredOutput = 0
-	elif currHour >= endTime:
-		desiredOutput = 0
-	else:
 		desiredOutput = 1
-
+	elif currHour >= endTime:
+		desiredOutput = 1
+	else:
+		desiredOutput = 0
+	
+	print desiredOutput
 	response = (desiredOutput, hourStr)
 	return response
+
+#need to change start time to test
+#determineOutput(24)

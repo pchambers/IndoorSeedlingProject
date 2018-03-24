@@ -24,7 +24,8 @@ def gardenControl(tray, timeOn):
 	output = determineOutput(timeOn)
 	desiredOutput = output[0]
 	hourStr = output[1]					#function also returns current hour for debug
-
+	print "desired output: "
+	print  desiredOutput
 #2	#make sure relay is initialized.
 	confirmInit(tray)
 
@@ -36,7 +37,7 @@ def gardenControl(tray, timeOn):
 	else:
 #4		#turn on or off light, report action.		
 		lightControl(tray,desiredOutput)
-		if desiredOutput:
+		if desiredOutput == 0:
 			print ("Turned lights ON at: " + hourStr)
 		else:
 			print ("Turned lights OFF at: " + hourStr)

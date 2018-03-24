@@ -7,9 +7,18 @@ Returns tuple, first variable is i2c Addr, 2nd is channel
 
 def int2Addr(light):
 	#set relay i2c Address
-	if light < 3:
-		ledAddr = 7
+	if light == 1:
+		ledAddr = 2
 		ledChannel = light - 1
+	elif light == 2:
+		ledAddr = 3
+		ledChannel = 1
+	elif light == 3:
+		ledAddr = 2
+		ledChannel = 1
+	elif light == 4:
+		ledAddr = 3
+		ledChannel = 1
 	else:
 		print ''
 		print 'Make sure more than 1 expansion board is installed.'
