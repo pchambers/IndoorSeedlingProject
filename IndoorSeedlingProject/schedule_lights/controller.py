@@ -30,7 +30,7 @@ def gardenControl(tray, timeOn):
 	currentOutput = checkStatus(tray)
 
 	if currentOutput == desiredOutput:
-		print 'All set!'
+		print 'Lights nominal.'
 	else:
 #3		#turn on or off light, report action.		
 		lightControl(tray,desiredOutput)

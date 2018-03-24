@@ -3,6 +3,7 @@ import urllib2
 
 import dht22_driver.dhtOnion as DHT
 import schedule_lights.controller as Controller
+import water_driver.water as WaterControl
 DHT22 = 'DHT22'
 DHT11 = 'DHT11'
 myAPI = "W0987CQMSNY4XIC3"
@@ -25,4 +26,5 @@ def speak(pin, sensor):
 #call garden control
 Controller.gardenControl(1,16)
 Controller.gardenControl(2,16)
+WaterControl.water(2,15)
 #speak(0, DHT22)
