@@ -14,9 +14,10 @@ def checkStatus(light):
 	status = gpio.getValue()
 	print 'Gpio value: ' + status
 	
-	if status == '1':
+	status = int(status)
+	if status == 1:
 		print 'Relay OFF'
-	elif status == '0':
+	elif status == 0:
 		print 'Relay ON '
 	else:
 		print 'Error: Bad status.'
