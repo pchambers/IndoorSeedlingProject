@@ -4,8 +4,9 @@ from datetime import datetime
 def water(rack, t):
 
 #1 find desired output
-	output = waterTimer(17, t)
+	output = waterTimer(18, t)
 	desired = output[0]
+	hourStr = output[1]
 #2 determine current output
 	currOut = checkPumpStatus(rack)
 #3 turn on/off, report
@@ -27,15 +28,14 @@ def trayPin(tray):
         elif tray == 2:
         	waterPin = 1
         elif tray == 3: 
-        	waterPin = 2
+        	waterPin = 0
         elif tray == 4:
-		waterPin = 3
+		waterPin = 1
         else:
 		waterPin = 404
                 #print 'Error: tray input out of range.'
 	#print waterPin
 	return waterPin
-
 
 def waterTimer(stTime, dur):
 

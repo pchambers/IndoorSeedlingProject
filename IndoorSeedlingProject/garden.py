@@ -24,7 +24,12 @@ def speak(pin, sensor):
         
 
 #call garden control
-Controller.gardenControl(1,16)
-Controller.gardenControl(2,16)
+Controller.gardenControl(1,24)
+Controller.gardenControl(2,24)
+Controller.gardenControl(3,24)
+Controller.gardenControl(4,24)
+WaterControl.water(1,15)
 WaterControl.water(2,15)
+WaterControl.water(3,15)
+WaterControl.water(4,15)
 #speak(0, DHT22)
